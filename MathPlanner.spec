@@ -4,7 +4,7 @@ Summary:	A Program for calculating many kind of things
 Summary(pl):	Program do ³atwego wykonywania obliczeñ matematycznych
 Name:		MathPlanner
 Version:	3.0.4
-Release:	0.5
+Release:	1
 License:	GPL v2
 Group:		X11/Applications/Publishing
 Source0:	http://koti.mbnet.fi/jarmonik/%{name}-%{version}.tar.gz
