@@ -9,5 +9,5 @@ Exec=MathPlanner3
 Terminal=false
 Type=Application
 MimeType=application/mpl2
-
+Categoris=Science;Math;
 # vi: encoding=utf-8
