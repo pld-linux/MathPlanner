@@ -1,0 +1,26 @@
+--- src/Base.cpp	2002-10-11 23:26:30.000000000 +0200
++++ /home/users/undefine/Base.cpp	2004-09-01 02:21:49.000000000 +0200
+@@ -1,6 +1,6 @@
+ /*
+  * MathPlanner 3.1 - Mathematical design tool.
+- * Copyright(C) 2002  Jarmo Nikkanen
++ * Copyright(C) 2004  Jarmo Nikkanen
+  *
+  * This program is free software; you can redistribute it and/or modify it
+  * under the terms of the GNU General Public License as published by the
+@@ -118,13 +118,13 @@
+    app.setMainWidget(mathwindow);
+    mathwindow->showMaximized();
+ 
+-
++   /*
+    switch (mathwindow->Style()) {
+       case 1: QLibrary  resolve(QWindowsStyle); break;
+   	  case 2: QLibrary  resolve(QPlatinumStyle); break;
+ 	    case 3: QLibrary  resolve(QMotifStyle); break;
+    }
+-  
++   */
+ 
+ 
+     // SETUP WEB BROWSER
