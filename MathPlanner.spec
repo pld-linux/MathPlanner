@@ -4,21 +4,22 @@ Summary:	A Program for calculating many kind of things
 Summary(pl):	Program do ³atwego wykonywania obliczeñ matematycznych
 Name:		MathPlanner
 Version:	3.0.4
-Release:	0.1
+Release:	0.5
 License:	GPL v2
 Group:		X11/Applications/Publishing
 Source0:	http://koti.mbnet.fi/jarmonik/%{name}-%{version}.tar.gz
 Patch0:		%{name}-ac_fix.patch
+Patch1:		%{name}-plugin.patch
 URL:		http://koti.mbnet.fi/jarmonik
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	kdelibs-devel >= 3
 BuildRequires:	libtool
-BuildRequires:	qt-devel >= 3.0.1
+BuildRequires:	qt-devel >= 3.0.5
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_prefix		/usr/X11R6
-%define		_mathdir	%{_datadir}/MathPlanner3
+%define		_mathdir	%{_datadir}/MathPlanner
 
 %description
 MathPlanner is mathematical design and publishing tool. MathPlanner
@@ -34,7 +35,8 @@ oraz definicje funkcji.
 
 %prep
 %setup -q
-%patch0
+%patch0 -p0
+%patch1 -p1
 
 %build
 QTDIR="/usr/X11R6"
@@ -61,7 +63,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc Changes.txt Doc.htm Doc examples
+%doc AUTHORS ChangeLog NEWS Doc.htm Doc examples
 %attr(755,root,root) %{_bindir}/*
 %dir %{_mathdir}
 %{_mathdir}/*.txt
