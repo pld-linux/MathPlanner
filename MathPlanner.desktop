@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=MathPlanner
+Name[pl]=MathPlanner
+Comment=MathPlanner
+Comment[pl]=MathPlanner
+Icon=MathPlannerApp.png
+Exec=MathPlanner3
+Terminal=0
+Type=Application
+
+# vi: encoding=utf-8
