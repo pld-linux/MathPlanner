@@ -3,15 +3,17 @@
 Summary:	A Program for calculating many kind of things
 Summary(pl):	Program do ³atwego wykonywania obliczeñ matematycznych
 Name:		MathPlanner
-Version:	3.0.2
-Release:	1
+Version:	3.0.3
+Release:	0.1
 License:	GPL v2
 Group:		X11/Applications/Publishing
 Source0:	http://koti.mbnet.fi/jarmonik/%{name}-%{version}.tar.gz
-Patch0:		%{name}-makefile.patch
-Patch1:		%{name}-opt.patch
+Patch0:		%{name}-ac_fix.patch
 URL:		http://koti.mbnet.fi/jarmonik
+BuildRequires:	autoconf
+BuildRequires:	automake
 BuildRequires:	kdelibs-devel >= 3
+BuildRequires:	libtool
 BuildRequires:	qt-devel >= 3.0.1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -31,15 +33,19 @@ Obs³uguje liczby zespolone, wertory i podstawowe operacje matematyczne
 oraz definicje funkcji.
 
 %prep
-%setup -q -n %{name}3-install
+%setup -q
 %patch0 -p1
-%patch1 -p1
 
 %build
-CFLAGS="-I/usr/X11R6/include/qt"
-LDFLAGS="-L/usr/X11R6/lib/qt/plugins-mt/styles/ -lqplatinumstyle -lqmotifstyle"
-export LDFLAGS CFLAGS
-%{__make} CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" build
+QTDIR="/usr/X11R6"
+export QTDIR
+
+%{__libtoolize}
+aclocal
+%{__autoconf}
+%{__automake}
+%configure
+%{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
