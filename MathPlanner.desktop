@@ -5,7 +5,7 @@ Comment=MathPlanner
 Comment[pl]=MathPlanner
 Icon=mathplannerapp.png
 Exec=MathPlanner3
-Terminal=0
+Terminal=false
 Type=Application
 MimeType=application/mpl2
 
