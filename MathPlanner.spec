@@ -1,13 +1,14 @@
 Summary:	A Program for calculating many kind of things
 Summary(pl):	Program do ³atwego wykonywania obliczeñ matematycznych
 Name:		MathPlanner
-Version:	3.1.2
+Version:	3.1.3
 Release:	0.1
 License:	GPL v2
 Group:		X11/Applications/Publishing
 Source0:	http://koti.mbnet.fi/jarmonik/%{name}-%{version}.tar.gz
-# Source0-md5:	63cbad25c7df3ef437f2afd8907aabcf
+# Source0-md5:	803a8de68056a4ec2e4c456b1ba9b320
 Source1:	%{name}.desktop
+Patch0:		MathPlanner-no_qstyles.patch
 URL:		http://koti.mbnet.fi/jarmonik/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -31,6 +32,7 @@ oraz definicje funkcji.
 
 %prep
 %setup -q
+%patch0
 
 %build
 QTDIR="%{_prefix}"
