@@ -1,6 +1,11 @@
 --- ./src/Makefile.org	Tue Jul 23 12:57:24 2002
-+++ ./src/Makefile	Tue Jul 23 21:28:49 2002
-@@ -130,23 +130,3 @@
++++ ./src/Makefile	Tue Jul 23 22:12:01 2002
+@@ -125,28 +125,7 @@
+ 		
+ link:	
+ 	$(CC) $(LIBS) *.o -o MathPlanner3
+-	cp MathPlanner3 /usr/bin
+ clean:
  	rm -f *.o
  	
  
@@ -25,13 +30,14 @@
 -
 -
 --- ./Makefile.org	Tue Jul 23 13:07:49 2002
-+++ ./Makefile	Tue Jul 23 21:28:00 2002
-@@ -1,15 +1,16 @@
++++ ./Makefile	Tue Jul 23 22:19:18 2002
+@@ -1,15 +1,19 @@
  # Makefile	Sun Jul 23 11:50:12 2002
  
 -INSTALL_DIR = /opt/MathPlanner3
-+PREFIX		= /usr
-+SBINDIR		= $(PREFIX)/sbin
++PREFIX		= /usr/X11R6
++BINDIR		= $(PREFIX)/bin
++DATADIR		= $(PREFIX)/share
 +INSTALL_DIR	= /opt/MathPlanner3
  
 -all:
@@ -47,7 +53,9 @@
 -	make -C $(INSTALL_DIR)/src all
 -	install -s -m 755 $(INSTALL_DIR)/src/MathPlanner3 /usr/bin/MathPlanner3
 -	make -C $(INSTALL_DIR)/src clean
-+	install -d $(DESTDIR)$(SBINDIR)
-+	install -s -m 755 src/MathPlanner3 $(DESTDIR)$(SBINDIR)
++	install -d $(DESTDIR)$(BINDIR) $(DESTDIR)$(DATADIR)/MathPlanner3/{pixmaps,icons}
++	install -s -m 755 src/MathPlanner3 $(DESTDIR)$(BINDIR)
++	install MPLConfig.txt $(DESTDIR)$(DATADIR)/MathPlanner3/
++	install pixmaps/* $(DESTDIR)$(DATADIR)/MathPlanner3/pixmaps
  	@echo " "
  	@echo "Type MathPlanner3 to start MathPlanner"
