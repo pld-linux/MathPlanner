@@ -1,0 +1,14 @@
+--- ./Makefile.org	Fri Jul 12 22:56:17 2002
++++ ./Makefile	Sat Jul 13 18:47:57 2002
+@@ -1,7 +1,9 @@
+ 
+ CC = g++
+-INC = -I/usr/X11R6/include -I/usr/lib/qt3/include/ -I/root/MathPlannerProject/MPL3
+-LIBS = -L/usr/lib -L/usr/X11R6/lib -L/usr/lib -L/usr/lib/qt3/lib -ldl -lXi -lXext -lX11 -lqt-mt
++CFLAGS =
++LDFLAGS =
++INC = -I/usr/X11R6/include -I/usr/lib/qt3/include/ -I. $(CFLAGS)
++LIBS = -L/usr/lib -L/usr/X11R6/lib -L/usr/lib -L/usr/lib/qt3/lib -ldl -lXi -lXext -lX11 -lqt-mt $(LDFLAGS)
+ FLAGS = -c
+ DEFINE = -D_GNU_SOURCE -D__NO_LONG_DOUBLE_MATH
+   
