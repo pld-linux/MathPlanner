@@ -1,0 +1,23 @@
+--- ./src/Base.cpp.org	Thu Aug 22 14:06:48 2002
++++ ./src/Base.cpp	Thu Aug 29 18:57:52 2002
+@@ -19,6 +19,7 @@
+ #include <qtextcodec.h>
+ #include <qmessagebox.h>
+ #include <qapplication.h>
++#include <qlibrary.h>
+ 
+ #include <stdlib.h>
+ 
+@@ -94,9 +95,9 @@
+ 
+ 
+    switch (mathwindow->Style()) {
+-      case 1: app.setStyle( new QWindowsStyle ); break;
+-      case 2: app.setStyle( new QPlatinumStyle ); break;
+-      case 3: app.setStyle( new QMotifStyle ); break;
++	   case 1: QLibrary resolve( QWindowsStyle ); break;
++	   case 2: QLibrary resolve(QPlatinumStyle); break;
++	   case 3: QLibrary resolve(QMotifStyle); break;
+    }
+ 
+ 

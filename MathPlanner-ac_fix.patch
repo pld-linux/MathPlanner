@@ -1,0 +1,24 @@
+--- configure.ac~	Wed Aug 28 20:29:17 2002
++++ configure.ac	Wed Aug 28 20:41:40 2002
+@@ -12,7 +12,7 @@
+ AC_PROG_CC
+ AC_PROG_CXX
+ AC_PROG_INSTALL
+-# AM_PROG_LIBTOOL
++AM_PROG_LIBTOOL
+ 
+ 
+ # Checks for header files.
+--- Makefile.am~	Wed Aug 28 20:29:17 2002
++++ Makefile.am	Wed Aug 28 20:44:04 2002
+@@ -12,8 +12,8 @@
+ 
+ EXTRA_DIST = ChangeLog COPYING MPLConfig.txt Doc.htm MathPlanner3.spec
+ 
+-AUTOMAKE_OPTIONS = foreign
+-##AUTOMAKE_OPTIONS = foreign dist-bzip2
++#AUTOMAKE_OPTIONS = foreign
++AUTOMAKE_OPTIONS = foreign dist-bzip2
+ 
+ install-data-local: $(EXTRA_DIST)
+ 	@$(NORMAL_INSTALL)
