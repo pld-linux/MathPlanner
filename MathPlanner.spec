@@ -1,19 +1,17 @@
-# TODO:
-# - desktop
 Summary:	A Program for calculating many kind of things
 Summary(pl):	Program do ³atwego wykonywania obliczeñ matematycznych
 Name:		MathPlanner
-Version:	3.0.4
+Version:	3.0.5
 Release:	1
 License:	GPL v2
 Group:		X11/Applications/Publishing
 Source0:	http://koti.mbnet.fi/jarmonik/%{name}-%{version}.tar.gz
+Source1:	%{name}.desktop
 Patch0:		%{name}-ac_fix.patch
-Patch1:		%{name}-plugin.patch
 URL:		http://koti.mbnet.fi/jarmonik
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	kdelibs-devel >= 3
+BuildRequires:	kdelibs-devel >= 3.0.3
 BuildRequires:	libtool
 BuildRequires:	qt-devel >= 3.0.5
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -36,7 +34,6 @@ oraz definicje funkcji.
 %prep
 %setup -q
 %patch0 -p0
-%patch1 -p1
 
 %build
 QTDIR="/usr/X11R6"
@@ -51,12 +48,13 @@ aclocal
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_pixmapsdir}/mini
+install -d $RPM_BUILD_ROOT{%{_pixmapsdir}/mini,%{_applnkdir}/Scientific}
 
 %{__make} install DESTDIR=$RPM_BUILD_ROOT
 
 install icons/*.xpm $RPM_BUILD_ROOT%{_pixmapsdir}
 install icons/mini/*.xpm $RPM_BUILD_ROOT%{_pixmapsdir}/mini
+install %{SOURCE1} $RPM_BUILD_ROOT%{_applnkdir}/Scientific/
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -70,3 +68,4 @@ rm -rf $RPM_BUILD_ROOT
 %{_mathdir}/pixmaps/*
 %{_pixmapsdir}/*.xpm
 %{_pixmapsdir}/mini/*.xpm
+%{_applnkdir}/Scientific/*.desktop
