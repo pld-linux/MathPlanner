@@ -1,0 +1,77 @@
+--- ./src/Makefile.am.org	Mon Jul 29 23:46:33 2002
++++ ./src/Makefile.am	Mon Aug  5 02:50:12 2002
+@@ -16,9 +16,9 @@
+ 	DragDrop.cpp Complex_math.cpp Math_functions.cpp Modify.cpp Rational_math.cpp \
+ 	Real_math.cpp Vector_math.cpp Setup.cpp Prefs.cpp
+ 
+-MathPlanner3_LDADD = -L$(QTDIR)/lib -lqt-mt
++MathPlanner3_LDADD = -L$(QTDIR)/lib -L$(QTDIR)/lib/qt -lqt-mt
+ 
+-INCLUDES = -I/usr/X11R6/include -I$(QTDIR)/include -D_GNU_SOURCE \
++INCLUDES = -I/usr/X11R6/include -I$(QTDIR)/include -I$(QTDIR)/include/qt -D_GNU_SOURCE \
+ 	-D_INSTALL_DIR=\"$(pkgdatadir)\"
+ 
+ 
+--- ./configure.in.org	Tue Jul 30 14:32:32 2002
++++ ./configure.in	Mon Aug  5 02:51:23 2002
+@@ -1,26 +1,23 @@
+ # Process this file with autoconf to produce a configure script.
+-AC_INIT(src/Base.cpp)
+-AM_CONFIG_HEADER(config.h)
+-
+-PACKAGE=MathPlanner3
+-VERSION=3.0.3
+-AM_INIT_AUTOMAKE($PACKAGE, $VERSION)
++AC_INIT([MathPlanner], [3.0.3], [modem626@kymp.net])
++AC_CONFIG_SRCDIR([src/Base.cpp])
++AM_CONFIG_HEADER([config.h])
++AM_INIT_AUTOMAKE
+ 
+ # Checks for programs.
+ AC_PROG_CC
+ AC_PROG_CXX
++AC_PROG_INSTALL
++AM_PROG_LIBTOOL
+ AC_CHECK_PROG(WEB_BROWSER, mozilla, "mozilla")
+ AC_CHECK_PROG(WEB_BROWSER, quanta, "quanta")
+ 
+-
+-
+-
+ # Checks for header files.
+ AC_HEADER_STDC
+-AC_CHECK_HEADERS(string.h,,AC_MSG_ERROR(You must have string.h))
++AC_CHECK_HEADERS(string.h,,AC_MSG_ERROR([You must have string.h]))
+ 
+ # Checks for library functions.
+-AC_CHECK_FUNCS(memset memcpy)
++AC_CHECK_FUNCS([memset memcpy])
+ 
+ # checks for libraries
+ 
+@@ -28,8 +25,13 @@
+ # do nothing
+ 	HAVE_QT=1
+ else
+-	AC_MSG_ERROR(You must export QTDIR)
++	AC_MSG_ERROR([You must export QTDIR])
+ fi
+ 
+ # All done
+-AC_OUTPUT(Makefile src/Makefile Doc/Makefile examples/Makefile icons/Makefile pixmaps/Makefile)
++AC_OUTPUT([Makefile
++	   src/Makefile
++	   Doc/Makefile
++	   examples/Makefile
++	   icons/Makefile
++	   pixmaps/Makefile])
+--- ./Makefile.am.org	Sun Aug  4 16:20:45 2002
++++ ./Makefile.am	Mon Aug  5 02:48:35 2002
+@@ -11,6 +11,7 @@
+ 
+ EXTRA_DIST = ChangeLog COPYING MPLConfig.txt Doc.htm
+ 
++AUTOMAKE_OPTIONS=foreign dist-bzip2
+ 
+ install-data-local: $(EXTRA_DIST)
+ 	@$(NORMAL_INSTALL)
