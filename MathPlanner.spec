@@ -1,12 +1,12 @@
 Summary:	A Program for calculating many kind of things
 Summary(pl):	Program do ³atwego wykonywania obliczeñ matematycznych
 Name:		MathPlanner
-Version:	3.0.6
-Release:	1
+Version:	3.1.2
+Release:	0.1
 License:	GPL v2
 Group:		X11/Applications/Publishing
 Source0:	http://koti.mbnet.fi/jarmonik/%{name}-%{version}.tar.gz
-# Source0-md5:	2b19b33f41808bfa21474fc6acb045a9
+# Source0-md5:	63cbad25c7df3ef437f2afd8907aabcf
 Source1:	%{name}.desktop
 URL:		http://koti.mbnet.fi/jarmonik/
 BuildRequires:	autoconf
@@ -33,7 +33,7 @@ oraz definicje funkcji.
 %setup -q
 
 %build
-QTDIR="/usr/X11R6"
+QTDIR="%{_prefix}"
 export QTDIR
 
 rm -f missing
@@ -46,7 +46,7 @@ rm -f missing
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_pixmapsdir}/{mini,hicolor/{32x32,64x64}/mimetypes/},%{_applnkdir}/Scientific/Mathematics} \
+install -d $RPM_BUILD_ROOT{%{_pixmapsdir}/{mini,hicolor/{32x32,64x64}/mimetypes/},%{_desktopdir}} \
 	$RPM_BUILD_ROOT%{_datadir}/mimelnk/application/
 
 %{__make} install \
@@ -56,7 +56,7 @@ install icons/64x64/apps/*.png $RPM_BUILD_ROOT%{_pixmapsdir}
 install icons/64x64/mimetypes/*.png $RPM_BUILD_ROOT%{_pixmapsdir}/hicolor/64x64/mimetypes/
 install icons/32x32/mimetypes/*.png $RPM_BUILD_ROOT%{_pixmapsdir}/hicolor/32x32/mimetypes/
 install mpl2.desktop $RPM_BUILD_ROOT%{_datadir}/mimelnk/application/
-install %{SOURCE1} $RPM_BUILD_ROOT%{_applnkdir}/Scientific/Mathematics
+install %{SOURCE1} $RPM_BUILD_ROOT%{_desktopdir}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -72,4 +72,4 @@ rm -rf $RPM_BUILD_ROOT
 %{_pixmapsdir}/*.png
 %{_pixmapsdir}/hicolor/*/mimetypes/*.png
 %{_datadir}/mimelnk/application/*.desktop
-%{_applnkdir}/Scientific/Mathematics/*.desktop
+%{_desktopdir}/*.desktop
