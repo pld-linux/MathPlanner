@@ -8,7 +8,7 @@ Group:		X11/Applications/Publishing
 Source0:	http://koti.mbnet.fi/jarmonik/%{name}-%{version}.tar.gz
 # Source0-md5:	2b19b33f41808bfa21474fc6acb045a9
 Source1:	%{name}.desktop
-URL:		http://koti.mbnet.fi/jarmonik
+URL:		http://koti.mbnet.fi/jarmonik/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	libtool
@@ -46,10 +46,11 @@ rm -f missing
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{_pixmapsdir}/{mini,hicolor/{32x32,64x64}/mimetypes/},%{_applnkdir}/Scientific/Mathematics}
-install -d $RPM_BUILD_ROOT%{_datadir}/mimelnk/application/
+install -d $RPM_BUILD_ROOT{%{_pixmapsdir}/{mini,hicolor/{32x32,64x64}/mimetypes/},%{_applnkdir}/Scientific/Mathematics} \
+	$RPM_BUILD_ROOT%{_datadir}/mimelnk/application/
 
-%{__make} install DESTDIR=$RPM_BUILD_ROOT
+%{__make} install \
+	DESTDIR=$RPM_BUILD_ROOT
 
 install icons/64x64/apps/*.png $RPM_BUILD_ROOT%{_pixmapsdir}
 install icons/64x64/mimetypes/*.png $RPM_BUILD_ROOT%{_pixmapsdir}/hicolor/64x64/mimetypes/
