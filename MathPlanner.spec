@@ -36,8 +36,9 @@ oraz definicje funkcji.
 QTDIR="/usr/X11R6"
 export QTDIR
 
+rm -f missing
 %{__libtoolize}
-aclocal
+%{__aclocal}
 %{__autoconf}
 %{__automake}
 %configure
