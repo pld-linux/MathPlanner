@@ -1,14 +1,53 @@
---- ./Makefile.org	Fri Jul 12 22:56:17 2002
-+++ ./Makefile	Sat Jul 13 18:47:57 2002
-@@ -1,7 +1,9 @@
+--- ./src/Makefile.org	Tue Jul 23 12:57:24 2002
++++ ./src/Makefile	Tue Jul 23 21:28:49 2002
+@@ -130,23 +130,3 @@
+ 	rm -f *.o
+ 	
  
- CC = g++
--INC = -I/usr/X11R6/include -I/usr/lib/qt3/include/ -I/root/MathPlannerProject/MPL3
--LIBS = -L/usr/lib -L/usr/X11R6/lib -L/usr/lib -L/usr/lib/qt3/lib -ldl -lXi -lXext -lX11 -lqt-mt
-+CFLAGS =
-+LDFLAGS =
-+INC = -I/usr/X11R6/include -I/usr/lib/qt3/include/ -I. $(CFLAGS)
-+LIBS = -L/usr/lib -L/usr/X11R6/lib -L/usr/lib -L/usr/lib/qt3/lib -ldl -lXi -lXext -lX11 -lqt-mt $(LDFLAGS)
- FLAGS = -c
- DEFINE = -D_GNU_SOURCE -D__NO_LONG_DOUBLE_MATH
-   
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+-
+--- ./Makefile.org	Tue Jul 23 13:07:49 2002
++++ ./Makefile	Tue Jul 23 21:28:00 2002
+@@ -1,15 +1,16 @@
+ # Makefile	Sun Jul 23 11:50:12 2002
+ 
+-INSTALL_DIR = /opt/MathPlanner3
++PREFIX		= /usr
++SBINDIR		= $(PREFIX)/sbin
++INSTALL_DIR	= /opt/MathPlanner3
+ 
+-all:
+-	@echo "Type 'make install' to build and install MathPlanner"
++all:	build install
++
++build:
++	make -C src all
+ 
+ install:
+-	mkdir $(INSTALL_DIR)
+-	cp -R * $(INSTALL_DIR)
+-	make -C $(INSTALL_DIR)/src all
+-	install -s -m 755 $(INSTALL_DIR)/src/MathPlanner3 /usr/bin/MathPlanner3
+-	make -C $(INSTALL_DIR)/src clean
++	install -d $(DESTDIR)$(SBINDIR)
++	install -s -m 755 src/MathPlanner3 $(DESTDIR)$(SBINDIR)
+ 	@echo " "
+ 	@echo "Type MathPlanner3 to start MathPlanner"
