@@ -1,9 +1,11 @@
+# TODO:
+# - desktop
 Summary:	A Program for calculating many kind of things
 Summary(pl):	Program do ³atwego wykonywania obliczeñ matematycznych
 Name:		MathPlanner
 Version:	3.0.2
-Release:	0.1
-License:	GPL
+Release:	1
+License:	GPL v2
 Group:		X11/Applications/Publishing
 Source0:	http://koti.mbnet.fi/jarmonik/%{name}-%{version}.tar.gz
 Patch0:		%{name}-makefile.patch
@@ -12,6 +14,9 @@ URL:		http://koti.mbnet.fi/jarmonik
 BuildRequires:	kdelibs-devel >= 3
 BuildRequires:	qt-devel >= 3.0.1
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+
+%define		_prefix		/usr/X11R6
+%define		_mathdir	%{_datadir}/MathPlanner3
 
 %description
 MathPlanner is mathematical design and publishing tool. MathPlanner
@@ -31,26 +36,29 @@ oraz definicje funkcji.
 %patch1 -p1
 
 %build
-CFLAGS="-I%{_prefix}/X11R6/include/qt"
+CFLAGS="-I/usr/X11R6/include/qt"
 LDFLAGS="-L/usr/X11R6/lib/qt/plugins-mt/styles/ -lqplatinumstyle -lqmotifstyle"
 export LDFLAGS CFLAGS
 %{__make} CFLAGS="$CFLAGS" LDFLAGS="$LDFLAGS" build
 
 %install
 rm -rf $RPM_BUILD_ROOT
-#mkdir -p $RPM_BUILD_ROOT/usr/bin
-#mkdir -p $RPM_BUILD_ROOT/opt/MathPlanner3
+install -d $RPM_BUILD_ROOT%{_pixmapsdir}/mini
 
 %{__make} install DESTDIR=$RPM_BUILD_ROOT
 
-#install -s -m 755 MathPlanner3 $RPM_BUILD_ROOT/usr/bin/MathPlanner3
-#cp -R Data/* $RPM_BUILD_ROOT/opt/MathPlanner3
+install icons/*.xpm $RPM_BUILD_ROOT%{_pixmapsdir}
+install icons/mini/*.xpm $RPM_BUILD_ROOT%{_pixmapsdir}/mini
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc Data/{Changes.txt,Doc.htm,MPLConfig.txt}
-#/opt/MathPlanner3
-#/usr/bin/MathPlanner3
+%doc Changes.txt Doc.htm Doc examples
+%attr(755,root,root) %{_bindir}/*
+%dir %{_mathdir}
+%{_mathdir}/*.txt
+%{_mathdir}/pixmaps/*
+%{_pixmapsdir}/*.xpm
+%{_pixmapsdir}/mini/*.xpm
