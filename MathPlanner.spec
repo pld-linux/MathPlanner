@@ -3,7 +3,7 @@
 Summary:	A Program for calculating many kind of things
 Summary(pl):	Program do ³atwego wykonywania obliczeñ matematycznych
 Name:		MathPlanner
-Version:	3.0.3
+Version:	3.0.4
 Release:	0.1
 License:	GPL v2
 Group:		X11/Applications/Publishing
@@ -34,7 +34,7 @@ oraz definicje funkcji.
 
 %prep
 %setup -q
-%patch0 -p1
+%patch0
 
 %build
 QTDIR="/usr/X11R6"
