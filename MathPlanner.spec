@@ -26,7 +26,7 @@ be used.
 
 %description -l pl
 MathPlanner jest matematycznym programem do tworzenia i publikacji.
-Obs³uguje liczby zespolone, wertory i podstawowe operacje matematyczne
+Obs³uguje liczby zespolone, wektory i podstawowe operacje matematyczne
 (trygonometria, logarytmy,...). Mog± byæ tak¿e u¿yte liczby ca³kowite
 oraz definicje funkcji.
 
