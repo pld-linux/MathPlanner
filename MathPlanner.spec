@@ -6,6 +6,7 @@ Release:	1
 License:	GPL v2
 Group:		X11/Applications/Publishing
 Source0:	http://koti.mbnet.fi/jarmonik/%{name}-%{version}.tar.gz
+# Source0-md5:	2b19b33f41808bfa21474fc6acb045a9
 Source1:	%{name}.desktop
 URL:		http://koti.mbnet.fi/jarmonik
 BuildRequires:	autoconf
