@@ -1,5 +1,5 @@
 Summary:	A Program for calculating many kind of things
-Summary(pl.UTF-8):   Program do łatwego wykonywania obliczeń matematycznych
+Summary(pl.UTF-8):	Program do łatwego wykonywania obliczeń matematycznych
 Name:		MathPlanner
 Version:	3.1.3
 Release:	3
