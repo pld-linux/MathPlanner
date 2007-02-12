@@ -1,5 +1,5 @@
 Summary:	A Program for calculating many kind of things
-Summary(pl):	Program do ≥atwego wykonywania obliczeÒ matematycznych
+Summary(pl.UTF-8):   Program do ≈Çatwego wykonywania oblicze≈Ñ matematycznych
 Name:		MathPlanner
 Version:	3.1.3
 Release:	3
@@ -24,10 +24,10 @@ supports complex numbers, vectors, and basic math operations like
 trigonometry, log, ln... Also integers and functions definations can
 be used.
 
-%description -l pl
+%description -l pl.UTF-8
 MathPlanner jest matematycznym programem do tworzenia i publikacji.
-Obs≥uguje liczby zespolone, wektory i podstawowe operacje matematyczne
-(trygonometria, logarytmy,...). Mog± byÊ takøe uøyte liczby ca≥kowite
+Obs≈Çuguje liczby zespolone, wektory i podstawowe operacje matematyczne
+(trygonometria, logarytmy,...). MogƒÖ byƒá tak≈ºe u≈ºyte liczby ca≈Çkowite
 oraz definicje funkcji.
 
 %prep
