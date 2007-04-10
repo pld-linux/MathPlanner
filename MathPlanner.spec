@@ -13,7 +13,7 @@ URL:		http://koti.mbnet.fi/jarmonik/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	libtool
-BuildRequires:	qt-devel >= 3.0.5
+BuildRequires:	qt-devel >= 3:3.0.5
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_mathdir	%{_datadir}/MathPlanner
