@@ -1,13 +1,12 @@
 [Desktop Entry]
-Encoding=UTF-8
 Name=MathPlanner
 Name[pl]=MathPlanner
 Comment=MathPlanner
 Comment[pl]=MathPlanner
-Icon=mathplannerapp.png
+Icon=mathplannerapp
 Exec=MathPlanner3
 Terminal=false
 Type=Application
-MimeType=application/mpl2
+MimeType=application/mpl2;
 Categories=Qt;Education;Science;Math;
 # vi: encoding=utf-8
